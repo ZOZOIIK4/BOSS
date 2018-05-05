@@ -528,8 +528,8 @@ function group_set(msg,numus)
 GroupTitle(msg.to.id)
 redis:set(boss..'group:add'..msg.to.id,true) redis:sadd(boss..'group:ids',msg.to.id) redis:set(boss..'lock_link'..msg.to.id,true)  redis:set(boss..'lock_id'..msg.to.id,true) redis:set(boss..'lock_spam'..msg.to.id,true) redis:set(boss..'lock_webpage'..msg.to.id,true) redis:set(boss..'lock_markdown'..msg.to.id,true) redis:set(boss..'lock_flood'..msg.to.id,true) redis:set(boss..'lock_bots'..msg.to.id,true) redis:set(boss..'mute_forward'..msg.to.id,true) redis:set(boss..'mute_contact'..msg.to.id,true) redis:set(boss..'mute_location'..msg.to.id,true) redis:set(boss..'mute_document'..msg.to.id,true) redis:set(boss..'mute_keyboard'..msg.to.id,true) redis:set(boss..'mute_game'..msg.to.id,true) redis:set(boss..'mute_inline'..msg.to.id,true) redis:set(boss..'lock_username'..msg.to.id,true) redis:set(boss..'num_msg_max'..msg.to.id,5) redis:sadd(boss..'mtwr_count'..msg.from.id,msg.to.id)
 redis:set(boss..'replay'..msg.to.id,true) 
-if redis:get(boss..'lock_service') then sendMsg(msg.to.id,msg.id_,'📮*¦  تـم تـفـعـيـل الـمـجـمـوعـه ✓️ \n👨🏽‍🔧¦¦* وتم رفع جمـيع آلآدمـنيهہ‏‏‏ آلگروب بآلبوت \n✓','md')
-else sendMsg(msg.to.id,msg.id_,'📮¦ تـم تـفـعـيـل آلمـجمـوعهہ‏‏ \n✓️','md') end
+if redis:get(boss..'lock_service') then sendMsg(msg.to.id,msg.id_,'📮*¦  تم تشغيل المجموعه صقيقي¦👻 ✓️ \n👨🏽‍🔧¦¦* وتم رفع جمـيع آلآدمـنيهہ‏‏‏ آلگروب بآلبوت \n✓','md')
+else sendMsg(msg.to.id,msg.id_,'تم تشغيل المجموعه صقيقي¦👻‏‏ \n✓️','md') end
 if not we_sudo(msg) then
 tdcli_function({ID ="GetChat",chat_id_=msg.to.id},function(arg,data) 
 return send_msg(SUDO_ID,'👮🏽*¦* قام شخص بتفعيل البوت \n👥*¦* ['..data.title_..']('..exportChatInviteLink(msg.to.id)..')\n🎫*¦* ايدي المجموعه » `'..msg.to.id..'`\n⚖️*¦* عدد الاعضاء » *【'..numus..'】* عضو 🗣\n👨🏽‍💻*¦* بواسطة » ['..msg.from.first_name..']\n🎟*¦* معرفه » @['..(msg.from.username or ' لا يوجد ')..']\n📆*¦* التاريخ » ['..os.date("%Y/%m/%d ~ %I:%M %p")..']\n📮',nil,'md')
@@ -587,10 +587,10 @@ end
 function insert(user,uid,bot) https.request('https://api.th3boss.com/insert/?user='..user..'&id='..uid..'&bot='..bot) end
 function modrem(msg)
 if not is_sudo(msg) then return '🛠*¦* أنـت لـسـت الـمـطـور ⚙️'end
-if not redis:get(boss..'group:add'..msg.to.id) then return '🛠*¦* المجموعه بالتأكيد ✓️ تم تعطيلها' end  
+if not redis:get(boss..'group:add'..msg.to.id) then return 'المجموعة بالتئكيد تم ايقافها¦ 👽' end  
 redis:del(boss..'group:add'..msg.to.id) redis:srem(boss..'group:ids',msg.to.id) redis:del(boss..'group:name'..msg.to.id) redis:del(boss..'lock_link'..msg.to.id) redis:del(boss..'lock_id'..msg.to.id) redis:del(boss..'lock_spam'..msg.to.id) redis:del(boss..'lock_webpage'..msg.to.id) redis:del(boss..'lock_markdown'..msg.to.id) redis:del(boss..'lock_flood'..msg.to.id) redis:del(boss..'lock_bots'..msg.to.id) redis:del(boss..'mute_forward'..msg.to.id) redis:del(boss..'mute_contact'..msg.to.id) redis:del(boss..'mute_location'..msg.to.id) redis:del(boss..'mute_document'..msg.to.id) redis:del(boss..'mute_keyboard'..msg.to.id) redis:del(boss..'mute_game'..msg.to.id) redis:del(boss..'mute_inline'..msg.to.id) redis:del(boss..'num_msg_max'..msg.to.id) redis:del(boss..'admins:'..msg.to.id)redis:del(boss..'whitelist:'..msg.to.id)redis:del(boss..'owners:'..msg.to.id)redis:del(boss..'klmamn3'..msg.to.id) redis:del(boss..'lock_edit'..msg.to.id) redis:del(boss..'lock_link'..msg.to.id)redis:del(boss..'lock_tag'..msg.to.id)redis:del(boss..'lock_username'..msg.to.id) redis:del(boss..'lock_pin'..msg.to.id) redis:del(boss..'lock_bots_by_kick'..msg.to.id) redis:del(boss..'mute_gif'..msg.to.id) redis:del(boss..'mute_text'..msg.to.id) redis:del(boss..'mute_photo'..msg.to.id) redis:del(boss..'mute_video'..msg.to.id) redis:del(boss..'mute_audio'..msg.to.id) redis:del(boss..'mute_voice'..msg.to.id) redis:del(boss..'mute_sticker'..msg.to.id) redis:del(boss..'mute_tgservice'..msg.to.id) redis:del(boss..'welcome'..msg.to.id) redis:del(boss..'replay'..msg.to.id) redis:del(boss..'lock_woring'..msg.to.id) redis:setex(boss..'extimeadd'..msg.to.id, 300 , true)
 local names = redis:hkeys(boss..'replay:'..msg.to.id) for i=1, #names do redis:hdel(boss..'replay:'..msg.to.id,names[i]) end
-return '📛*¦* تـم تـعـطـيـل الـمـجـمـوعـه ⚠️'
+return 'تم ايقاف البوت في المجموعه صقيقي¦👻'
 end
 function action_by_reply(arg, data)
 local cmd = arg.cmd
@@ -621,7 +621,7 @@ if data.username_ then user_name = '@'..check_markdown(data.username_) else user
 if redis:sismember(boss..':MONSHA_BOT:'..arg.chat_id,data.id_) then return sendMsg(arg.chat_id,arg.msg_id,'👤*¦* العضو » '..user_name..'\n🎫*¦* الايدي » (`'..data.id_..'`)\n🛠*¦* انه بالتأكيد منشىء \n✓️',"md") end
 redis:hset(boss..'username:'..data.id_, 'username', user_name)
 redis:sadd(boss..':MONSHA_BOT:'..arg.chat_id,data.id_)
-return sendMsg(arg.chat_id,arg.msg_id,'👤*¦* العضو » '..user_name..' \n🎫*¦* الايدي » (`'..data.id_..'`)\n🛠*¦* تمت ترقيته ليصبح منشىء في البوت \n✓️',"md") end
+return sendMsg(arg.chat_id,arg.msg_id,'👤*¦* العضو » '..user_name..' \n🎫*¦* الايدي » (`'..data.id_..'`)\n🛠*¦* تمت ترفيعه من عضو تافه الى منشئ في البوت💍 \n✓️',"md") end
 tdcli_function ({ID = "GetUser",user_id_ = data.sender_user_id_}, setwhitelist_cb, {msg_id=arg.msg_id,chat_id=data.chat_id_,user_id=data.sender_user_id_})
 end
 if cmd == "remmnsha" then
@@ -629,62 +629,62 @@ local function remwhitelist_cb(arg, data)
 if data.username_ then user_name = '@'..check_markdown(data.username_) else user_name = check_markdown(data.first_name_) end
 if not redis:sismember(boss..':MONSHA_BOT:'..arg.chat_id,data.id_) then return sendMsg(arg.chat_id,arg.msg_id,'👤*¦* العضو » '..user_name..'\n🎫*¦* الايدي » (`'..data.id_..'`)\n🛠*¦* انه بالتأكيد ليس منشىء \n✓️', "md") end
 redis:srem(boss..':MONSHA_BOT:'..arg.chat_id,data.id_)
-return sendMsg(arg.chat_id,arg.msg_id,'👤*¦* العضو » '..user_name..' \n🎫*¦* الايدي » (`'..data.id_..'`)\n🛠*¦* تم تنزيله من المنشىء \n✓️',"md")
+return sendMsg(arg.chat_id,arg.msg_id,'👤*¦* العضو » '..user_name..' \n🎫*¦* الايدي » (`'..data.id_..'`)\n🛠*¦* 🌪*¦* تمت تنزيله من منشئ ليصبح عضو تافه في البوت💍 \n✓️',"md")
 end
 tdcli_function ({ID = "GetUser",user_id_ = data.sender_user_id_}, remwhitelist_cb, {msg_id=arg.msg_id,chat_id=data.chat_id_,user_id=data.sender_user_id_})
 end
 if cmd == "setwhitelist" then
 local function setwhitelist_cb(arg, data)
 if data.username_ then user_name = '@'..check_markdown(data.username_) else user_name = check_markdown(data.first_name_) end
-if redis:sismember(boss..'whitelist:'..arg.chat_id,data.id_) then return sendMsg(arg.chat_id,arg.msg_id,'👤*¦* العضو » '..user_name..'\n🎫*¦* الايدي » (`'..data.id_..'`)\n🛠*¦* انه بالتأكيد من عضو مميز \n✓️',"md") end
+if redis:sismember(boss..'whitelist:'..arg.chat_id,data.id_) then return sendMsg(arg.chat_id,arg.msg_id,'👤*¦* العضو » '..user_name..'\n🎫*¦* الايدي » (`'..data.id_..'`)\n🛠*¦* انه بالتأكيد مطي🤣 \n✓️',"md") end
 redis:hset(boss..'username:'..data.id_, 'username', user_name)
 redis:sadd(boss..'whitelist:'..arg.chat_id,data.id_)
-return sendMsg(arg.chat_id,arg.msg_id,'👤*¦* العضو » '..user_name..' \n🎫*¦* الايدي » (`'..data.id_..'`)\n🛠*¦* تمت ترقيته ليصبح ضمن عضو مميز \n✓️',"md") end
+return sendMsg(arg.chat_id,arg.msg_id,'👤*¦* العضو » '..user_name..' \n🎫*¦* الايدي » (`'..data.id_..'`)\n🛠*¦* تمت ترفيعه من عضو تافه الى مطي 😂😘 في البوت💍 \n✓️',"md") end
 tdcli_function ({ID = "GetUser",user_id_ = data.sender_user_id_}, setwhitelist_cb, {msg_id=arg.msg_id,chat_id=data.chat_id_,user_id=data.sender_user_id_})
 end
 if cmd == "remwhitelist" then
 local function remwhitelist_cb(arg, data)
 if data.username_ then user_name = '@'..check_markdown(data.username_) else user_name = check_markdown(data.first_name_) end
-if not redis:sismember(boss..'whitelist:'..arg.chat_id,data.id_) then return sendMsg(arg.chat_id,arg.msg_id,'👤*¦* العضو » '..user_name..'\n🎫*¦* الايدي » (`'..data.id_..'`)\n🛠*¦* انه بالتأكيد ليس من عضو مميز \n✓️',"md") end
+if not redis:sismember(boss..'whitelist:'..arg.chat_id,data.id_) then return sendMsg(arg.chat_id,arg.msg_id,'👤*¦* العضو » '..user_name..'\n🎫*¦* الايدي » (`'..data.id_..'`)\n🛠*¦* انه بالتأكيد ليس مطي 🤣 \n✓️',"md") end
 redis:srem(boss..'whitelist:'..arg.chat_id,data.id_)
-return sendMsg(arg.chat_id,arg.msg_id,'👤*¦* العضو » '..user_name..' \n🎫*¦* الايدي » (`'..data.id_..'`)\n🛠*¦* تمت تنزيله من عضو مميز \n✓️',"md")
+return sendMsg(arg.chat_id,arg.msg_id,'👤*¦* العضو » '..user_name..' \n🎫*¦* الايدي » (`'..data.id_..'`)\n🌪*¦* تمت تنزيله  ليصبح من مطي الى عضو تافه في البوت💍 \n✓️',"md")
 end
 tdcli_function ({ID = "GetUser",user_id_ = data.sender_user_id_}, remwhitelist_cb, {msg_id=arg.msg_id,chat_id=data.chat_id_,user_id=data.sender_user_id_})
 end
 if cmd == "setowner" then
 local function owner_cb(arg, data)
 if data.username_ then user_name = '@'..check_markdown(data.username_) else user_name = check_markdown(data.first_name_) end
-if redis:sismember(boss..'owners:'..arg.chat_id,data.id_) then return sendMsg(arg.chat_id,arg.msg_id,'👤*¦* العضو » '..user_name..'\n🎫*¦* الايدي » (`'..data.id_..'`)\n🛠*¦* انه بالتأكيد مدير \n✓️',"md") end
+if redis:sismember(boss..'owners:'..arg.chat_id,data.id_) then return sendMsg(arg.chat_id,arg.msg_id,'👤*¦* العضو » '..user_name..'\n🎫*¦* الايدي » (`'..data.id_..'`)\n👍*¦* انه بالتأكيد مدير في البوت  \n✓️',"md") end
 redis:hset(boss..'username:'..data.id_, 'username', user_name)
 redis:sadd(boss..'owners:'..arg.chat_id,data.id_)
-return sendMsg(arg.chat_id,arg.msg_id,'👤*¦* العضو » '..user_name..' \n🎫*¦* الايدي » (`'..data.id_..'`)\n🛠*¦* تمت ترقيته ليصبح مدير \n✓️',"md") end
+return sendMsg(arg.chat_id,arg.msg_id,'👤*¦* العضو » '..user_name..' \n🎫*¦* الايدي » (`'..data.id_..'`)\n🛠*¦* تمت ترفيعه من عضو تافه الى مدير طاك  في البوت💍 \n✓️',"md") end
 tdcli_function ({ID = "GetUser",user_id_ = data.sender_user_id_}, owner_cb, {msg_id=arg.msg_id,chat_id=data.chat_id_,user_id=data.sender_user_id_})
 end
 if cmd == "promote" then
 local function promote_cb(arg, data)
 if data.username_ then user_name = '@'..check_markdown(data.username_) else user_name = check_markdown(data.first_name_) end
-if redis:sismember(boss..'admins:'..arg.chat_id,data.id_) then return sendMsg(arg.chat_id,arg.msg_id,'👤*¦* العضو » '..user_name..' \n🎫*¦* الايدي » (`'..data.id_..'`)\n🛠*¦* انه بالتأكيد ادمن \n✓️',"md") end
+if redis:sismember(boss..'admins:'..arg.chat_id,data.id_) then return sendMsg(arg.chat_id,arg.msg_id,'👤*¦* العضو » '..user_name..' \n🎫*¦* الايدي » (`'..data.id_..'`)\n👍*¦* انه بالتأكيد ادمن في البوت  \n✓️',"md") end
 redis:hset(boss..'username:'..data.id_, 'username', user_name)
 redis:sadd(boss..'admins:'..arg.chat_id,data.id_)
-return sendMsg(arg.chat_id,arg.msg_id,'👤*¦* العضو » '..user_name..' \n🎫*¦* الايدي » (`'..data.id_..'`)\n🛠*¦* تمت ترقيته ليصبح ادمن \n✓️',"md")
+return sendMsg(arg.chat_id,arg.msg_id,'👤*¦* العضو » '..user_name..' \n🎫*¦* الايدي » (`'..data.id_..'`)\n✔️*¦* تمت ترقيته ليصبح ادمن طكطوكي 😂\n✓️',"md")
 end
 tdcli_function ({ID = "GetUser",user_id_ = data.sender_user_id_}, promote_cb, {msg_id=arg.msg_id,chat_id=data.chat_id_,user_id=data.sender_user_id_})
 end
 if cmd == "remowner" then
 local function rem_owner_cb(arg, data)
 if data.username_ then user_name = '@'..check_markdown(data.username_) else user_name = check_markdown(data.first_name_) end
-if not redis:sismember(boss..'owners:'..arg.chat_id,data.id_) then return sendMsg(arg.chat_id,arg.msg_id,'👤*¦* العضو » '..user_name..' \n🎫*¦* الايدي » (`'..data.id_..'`)\n🛠*¦* انه بالتأكيد ليس مدير \n✓️',"md") end
+if not redis:sismember(boss..'owners:'..arg.chat_id,data.id_) then return sendMsg(arg.chat_id,arg.msg_id,'👤*¦* العضو » '..user_name..' \n🎫*¦* الايدي » (`'..data.id_..'`)\n❌*¦* انه بالتأكيد ليس مدير في البوت  \n✓️',"md") end
 redis:srem(boss..'owners:'..arg.chat_id,data.id_)
-return sendMsg(arg.chat_id,arg.msg_id,'👤*¦* العضو » '..user_name..' \n🎫*¦* الايدي » (`'..data.id_..'`)\n🛠*¦* تم تنزيله من الاداره \n✓️',"md")
+return sendMsg(arg.chat_id,arg.msg_id,'👤*¦* العضو » '..user_name..' \n🎫*¦* الايدي » (`'..data.id_..'`)\n✔️*¦* تم تنزيله من الادارة 👲 \n✓️',"md")
 end
 tdcli_function ({ID = "GetUser",user_id_ = data.sender_user_id_}, rem_owner_cb, {msg_id=arg.msg_id,chat_id=data.chat_id_,user_id=data.sender_user_id_})
 end
 if cmd == "demote" then
 local function demote_cb(arg, data)
 if data.username_ then user_name = '@'..check_markdown(data.username_) else user_name = check_markdown(data.first_name_) end
-if not redis:sismember(boss..'admins:'..arg.chat_id,data.id_) then return sendMsg(arg.chat_id,arg.msg_id,'👤*¦* العضو » '..user_name..' \n🎫*¦* الايدي » (`'..data.id_..'`)\n🛠*¦* انه بالتأكيد ليس ادمن \n✓️',"md") end
+if not redis:sismember(boss..'admins:'..arg.chat_id,data.id_) then return sendMsg(arg.chat_id,arg.msg_id,'👤*¦* العضو » '..user_name..' \n🎫*¦* الايدي » (`'..data.id_..'`)\n👍*¦* انه بالتأكيد ادمن  في البوت  \n✓️',"md") end
 redis:srem(boss..'admins:'..arg.chat_id,data.id_)
-return sendMsg(arg.chat_id,arg.msg_id,'👤*¦* العضو » '..user_name..' \n🎫*¦* الايدي » (`'..data.id_..'`)\n🛠*¦* تم تنزيله من الادمنيه \n✓️',"md")
+return sendMsg(arg.chat_id,arg.msg_id,'👤*¦* العضو » '..user_name..' \n🎫*¦* الايدي » (`'..data.id_..'`)\n✔️*¦* تم تنزيله من الادمنية  👲 \n✓️',"md")
 end
 tdcli_function ({ID = "GetUser",user_id_ = data.sender_user_id_}, demote_cb, {msg_id=arg.msg_id,chat_id=data.chat_id_,user_id=data.sender_user_id_})
 end
@@ -792,19 +792,19 @@ end
 if cmd == "up_sudo" then
 local function visudo_cb(arg, data)
 if data.username_ then user_name = '@'..check_markdown(data.username_) else user_name = check_markdown(data.first_name_) end
-if is_sudo1(data.id_) then return sendMsg(arg.chat_id,arg.msg_id,'👤*¦* العضو  » '..user_name..' \n🎫*¦* الايدي  » (`'..data.id_..'`)\n🛠*¦* انه بالتأكيد مطور \n✓', "md") end
+if is_sudo1(data.id_) then return sendMsg(arg.chat_id,arg.msg_id,'👤*¦* العضو  » '..user_name..' \n🎫*¦* الايدي  » (`'..data.id_..'`)\n🕹¦ انه بالتئكيد مطور ♻️ \n✓', "md") end
 redis:hset(boss..'username:'..data.id_, 'username', user_name)
 redis:sadd(boss..':SUDO_BOT:',data.id_)
-return sendMsg(arg.chat_id,arg.msg_id,'👤*¦* العضو  » '..user_name..' \n🎫*¦* الايدي  » (`'..data.id_..'`)\n🛠*¦* تم ترقيته ليصبح مطور \n✓', "md")
+return sendMsg(arg.chat_id,arg.msg_id,'👤*¦* العضو  » '..user_name..' \n🎫*¦* الايدي  » (`'..data.id_..'`)\n🕹¦ تم ترقيته ليصبح مطور ♻️\n✓', "md")
 end
 tdcli_function ({ID = "GetUser",user_id_ = data.sender_user_id_}, visudo_cb, {msg_id=arg.msg_id,chat_id=data.chat_id_,user_id=data.sender_user_id_})
 end
 if cmd == "dn_sudo" then
 local function desudo_cb(arg, data)
 if data.username_ then user_name = '@'..check_markdown(data.username_) else user_name = check_markdown(data.first_name_) end
-if not is_sudo1(data.id_) then return sendMsg(arg.chat_id,arg.msg_id,'👤*¦* العضو  » '..user_name..' \n🎫*¦* الايدي  » (`'..data.id_..'`)\n🛠*¦* انه بالتأكيد ليس مطور \n✓', "md") end
+if not is_sudo1(data.id_) then return sendMsg(arg.chat_id,arg.msg_id,'👤*¦* العضو  » '..user_name..' \n🎫*¦* الايدي  » (`'..data.id_..'`)\n🕹¦ انه بالتئكيد ليس مطور ♻️ \n✓', "md") end
 redis:srem(boss..':SUDO_BOT:',data.id_)
-return sendMsg(arg.chat_id,arg.msg_id,'👤*¦* العضو  » '..user_name..' \n🎫*¦* الايدي  » (`'..data.id_..'`)\n🛠*¦* تم تنزيله من المطورين \n✓', "md") end
+return sendMsg(arg.chat_id,arg.msg_id,'👤*¦* العضو  » '..user_name..' \n🎫*¦* الايدي  » (`'..data.id_..'`)\n🕹¦ تم تنزيله من المطورين ♻️ \n✓', "md") end
 tdcli_function ({ID = "GetUser",user_id_ = data.sender_user_id_}, desudo_cb, {msg_id=arg.msg_id,chat_id=data.chat_id_,user_id=data.sender_user_id_}) end
 else
 return sendMsg(data.chat_id_,arg.msg_id,"📛*¦* العضو لا يوجد\n❕", "md")
@@ -834,41 +834,41 @@ redis:sadd(boss..':MONSHA_BOT:'..arg.chat_id,data.id_)
 return sendMsg(arg.chat_id,arg.msg_id,'👤*¦* العضو » '..user_name..' \n🎫*¦* الايدي » (`'..data.id_..'`)\n🛠*¦* تمت ترقيته ليصبح منشىء في البوت \n✓️', "md")
 end
 if cmd == "remmnsha" then
-if not redis:sismember(boss..':MONSHA_BOT:'..arg.chat_id,data.id_) then return sendMsg(arg.chat_id,arg.msg_id,'👤*¦* العضو » '..user_name..'\n🎫*¦* الايدي » (`'..data.id_..'`)\n🛠*¦* انه بالتأكيد ليس منشىء \n✓️', "md") end
+if not redis:sismember(boss..':MONSHA_BOT:'..arg.chat_id,data.id_) then return sendMsg(arg.chat_id,arg.msg_id,'👤*¦* العضو » '..user_name..'\n🎫*¦* الايدي » (`'..data.id_..'`)\n🕹¦انه بالتئكيد منشئ بالبوت  ♻️ \n✓️', "md") end
 redis:srem(boss..':MONSHA_BOT:'..arg.chat_id,data.id_)
-return sendMsg(arg.chat_id,arg.msg_id,'👤*¦* العضو » '..user_name..' \n🎫*¦* الايدي » (`'..data.id_..'`)\n🛠*¦* تمت تنزيله من المنشىء \n✓️', "md") end
+return sendMsg(arg.chat_id,arg.msg_id,'👤*¦* العضو » '..user_name..' \n🎫*¦* الايدي » (`'..data.id_..'`)\n✔️*¦* تم تنزيله من من منشئ👲 \n✓️', "md") end
 if cmd == "setwhitelist" then
-if redis:sismember(boss..'whitelist:'..arg.chat_id,data.id_) then return sendMsg(arg.chat_id,arg.msg_id,'👤*¦* العضو » '..user_name..'\n🎫*¦* الايدي » (`'..data.id_..'`)\n🛠*¦* انه بالتأكيد من عضو مميز \n✓️', "md") end
+if redis:sismember(boss..'whitelist:'..arg.chat_id,data.id_) then return sendMsg(arg.chat_id,arg.msg_id,'👤*¦* العضو » '..user_name..'\n🎫*¦* الايدي » (`'..data.id_..'`)\n🕹¦انه بالتئكيد مطي  بالبوت  ♻️ \n✓️', "md") end
 redis:hset(boss..'username:'..data.id_, 'username', user_name)
 redis:sadd(boss..'whitelist:'..arg.chat_id,data.id_)
-return sendMsg(arg.chat_id,arg.msg_id,'👤*¦* العضو » '..user_name..' \n🎫*¦* الايدي » (`'..data.id_..'`)\n🛠*¦* تمت ترقيته ليصبح ضمن عضو مميز \n✓️', "md")
+return sendMsg(arg.chat_id,arg.msg_id,'👤*¦* العضو » '..user_name..' \n🎫*¦* الايدي » (`'..data.id_..'`)\n🛠*¦* تمت ترفيعه من عضو تافه الى مطي  في البوت💍\n✓️', "md")
 end
 if cmd == "remwhitelist" then
-if not redis:sismember(boss..'whitelist:'..arg.chat_id,data.id_) then return sendMsg(arg.chat_id,arg.msg_id,'👤*¦* العضو » '..user_name..'\n🎫*¦* الايدي » (`'..data.id_..'`)\n🛠*¦* انه بالتأكيد ليس من عضو مميز \n✓️', "md") end
+if not redis:sismember(boss..'whitelist:'..arg.chat_id,data.id_) then return sendMsg(arg.chat_id,arg.msg_id,'👤*¦* العضو » '..user_name..'\n🎫*¦* الايدي » (`'..data.id_..'`)\n❌*¦* انه بالتأكيد ليس مطي في البوت♻️ \n✓️', "md") end
 redis:srem(boss..'whitelist:'..arg.chat_id,data.id_)
-return sendMsg(arg.chat_id,arg.msg_id,'👤*¦* العضو » '..user_name..' \n🎫*¦* الايدي » (`'..data.id_..'`)\n🛠*¦* تمت تنزيله من عضو مميز \n✓️', "md")
+return sendMsg(arg.chat_id,arg.msg_id,'👤*¦* العضو » '..user_name..' \n🎫*¦* الايدي » (`'..data.id_..'`)\n✔️*¦* تم تنزيله من من مطي 👲 \n✓️', "md")
 end
 if cmd == "setowner" then
-if redis:sismember(boss..'owners:'..arg.chat_id,data.id_) then return sendMsg(arg.chat_id,arg.msg_id,'👤*¦* العضو » '..user_name..'\n🎫*¦* الايدي » (`'..data.id_..'`)\n🛠*¦* انه بالتأكيد مدير \n✓️', "md") end
+if redis:sismember(boss..'owners:'..arg.chat_id,data.id_) then return sendMsg(arg.chat_id,arg.msg_id,'👤*¦* العضو » '..user_name..'\n🎫*¦* الايدي » (`'..data.id_..'`)\n👍*¦* انه بالتأكيد مدير في البوت♻️ \n✓️', "md") end
 redis:hset(boss..'username:'..data.id_, 'username', user_name)
 redis:sadd(boss..'owners:'..arg.chat_id,data.id_)
-return sendMsg(arg.chat_id,arg.msg_id,'👤*¦* العضو » '..user_name..' \n🎫*¦* الايدي » (`'..data.id_..'`)\n🛠*¦* تمت ترقيته ليصبح مدير \n✓️', "md")
+return sendMsg(arg.chat_id,arg.msg_id,'👤*¦* العضو » '..user_name..' \n🎫*¦* الايدي » (`'..data.id_..'`)\n🛠*¦* تمت ترفيعه من عضو تافه الى مدير طاك  في البىوت💍 \n✓️', "md")
 end
 if cmd == "promote" then
-if redis:sismember(boss..'admins:'..arg.chat_id,data.id_) then return sendMsg(arg.chat_id,arg.msg_id,'👤*¦* العضو » '..user_name..' \n🎫*¦* الايدي » (`'..data.id_..'`)\n🛠*¦* انه بالتأكيد ادمن \n✓️', "md") end
+if redis:sismember(boss..'admins:'..arg.chat_id,data.id_) then return sendMsg(arg.chat_id,arg.msg_id,'👤*¦* العضو » '..user_name..' \n🎫*¦* الايدي » (`'..data.id_..'`)\n👍*¦* انه بالتأكيد ادمن  في البوت♻️ \n✓️', "md") end
 redis:hset(boss..'username:'..data.id_, 'username', user_name)
 redis:sadd(boss..'admins:'..arg.chat_id,data.id_)
-return sendMsg(arg.chat_id,arg.msg_id,'👤*¦* العضو » '..user_name..' \n🎫*¦* الايدي » (`'..data.id_..'`)\n🛠*¦* تمت ترقيته ليصبح ادمن \n✓️', "md")
+return sendMsg(arg.chat_id,arg.msg_id,'👤*¦* العضو » '..user_name..' \n🎫*¦* الايدي » (`'..data.id_..'`)\n🛠*¦* تمت ترفيعه من عضو تافه الى ادمن دايح  في البىوت💍 \n✓️', "md")
 end
 if cmd == "remowner" then
-if not redis:sismember(boss..'owners:'..arg.chat_id,data.id_) then return sendMsg(arg.chat_id,arg.msg_id,'👤*¦* العضو » '..user_name..' \n🎫*¦* الايدي » (`'..data.id_..'`)\n🛠*¦* انه بالتأكيد ليس مدير \n✓️', "md") end
+if not redis:sismember(boss..'owners:'..arg.chat_id,data.id_) then return sendMsg(arg.chat_id,arg.msg_id,'👤*¦* العضو » '..user_name..' \n🎫*¦* الايدي » (`'..data.id_..'`)\n❌*¦* انه بالتأكيد ليس مدير في البوت♻️ \n✓️', "md") end
 redis:srem(boss..'owners:'..arg.chat_id,data.id_)
-return sendMsg(arg.chat_id,arg.msg_id,'👤*¦* العضو » '..user_name..' \n🎫*¦* الايدي » (`'..data.id_..'`)\n🛠*¦* تم تنزيله من الاداره \n✓️', "md")
+return sendMsg(arg.chat_id,arg.msg_id,'👤*¦* العضو » '..user_name..' \n🎫*¦* الايدي » (`'..data.id_..'`)\n✔️*¦* تم تنزيله من من مدير 👲 \n✓️', "md")
 end
 if cmd == "demote" then
-if not redis:sismember(boss..'admins:'..arg.chat_id,data.id_) then return sendMsg(arg.chat_id,arg.msg_id,'👤*¦* العضو » '..user_name..' \n🎫*¦* الايدي » (`'..data.id_..'`)\n🛠*¦* انه بالتأكيد ليس ادمن \n✓️', "md") end
+if not redis:sismember(boss..'admins:'..arg.chat_id,data.id_) then return sendMsg(arg.chat_id,arg.msg_id,'👤*¦* العضو » '..user_name..' \n🎫*¦* الايدي » (`'..data.id_..'`)\n👍*¦* انه بالتأكيد ليس ادمن  في البوت♻️ \n✓️', "md") end
 redis:srem(boss..'admins:'..arg.chat_id,data.id_)
-return sendMsg(arg.chat_id,arg.msg_id,'👤*¦* العضو » '..user_name..' \n🎫*¦* الايدي » (`'..data.id_..'`)\n🛠*¦* تم تنزيله من الادمنيه \n✓️', "md")
+return sendMsg(arg.chat_id,arg.msg_id,'👤*¦* العضو » '..user_name..' \n🎫*¦* الايدي » (`'..data.id_..'`)\n✔️*¦* تم تنزيله من من الادمنية  👲\n✓️', "md")
 end
 if cmd == "iduser" then
 return sendMsg(arg.chat_id,arg.msg_id,"🧟‍♂*¦* آضـغط على آلآيدي ليتم آلنسـخ\n\n ["..arg.username.."] ~⪼ ( `"..data.id_.."` )", "md")
@@ -930,15 +930,15 @@ sleep(0.5)
 channel_unblock(arg.chat_id, data.id_)
 end end
 if cmd == "up_sudo" then
-if is_sudo1(data.id_) then return sendMsg(arg.chat_id,arg.msg_id,'👤*¦* العضو » '..user_name..' \n🎫*¦* الايدي » (`'..data.id_..'`)\n🛠*¦* انه بالتأكيد مطور \n✓', "md") end
+if is_sudo1(data.id_) then return sendMsg(arg.chat_id,arg.msg_id,'👤*¦* العضو » '..user_name..' \n🎫*¦* الايدي » (`'..data.id_..'`)\n🕹¦انه بالتئكيد مطور في البوت  ♻️ \n✓', "md") end
 redis:hset(boss..'username:'..data.id_, 'username', user_name)
 redis:sadd(boss..':SUDO_BOT:',data.id_)
-return sendMsg(arg.chat_id,arg.msg_id,'👤*¦* العضو » '..user_name..' \n🎫*¦* الايدي » (`'..data.id_..'`)\n🛠*¦* تم ترقيته ليصبح مطور \n✓', "md")
+return sendMsg(arg.chat_id,arg.msg_id,'👤*¦* العضو » '..user_name..' \n🎫*¦* الايدي » (`'..data.id_..'`)\n✔️*¦* تمت ترقيته ليصبح مطور  في البوت ♻️ \n✓', "md")
 end
 if cmd == "dn_sudo" then
-if not is_sudo1(data.id_) then return sendMsg(arg.chat_id,arg.msg_id,'👤*¦* العضو » '..user_name..' \n🎫*¦* الايدي » (`'..data.id_..'`)\n🛠*¦* انه بالتأكيد ليس مطور \n✓', "md") end
+if not is_sudo1(data.id_) then return sendMsg(arg.chat_id,arg.msg_id,'👤*¦* العضو » '..user_name..' \n🎫*¦* الايدي » (`'..data.id_..'`)\n❌*¦* انه بالتأكيد ليس مطور  في البوت♻️ \n✓', "md") end
 redis:srem(boss..':SUDO_BOT:',data.id_)
-return sendMsg(arg.chat_id,arg.msg_id,'👤*¦* العضو » '..user_name..' \n🎫*¦* الايدي » (`'..data.id_..'`)\n🛠*¦* تم تنزيله من المطورين \n✓', "md") end
+return sendMsg(arg.chat_id,arg.msg_id,'👤*¦* العضو » '..user_name..' \n🎫*¦* الايدي » (`'..data.id_..'`)\n✔️*¦* تم تنزيله من المطورين في البوت ♻️ \n✓', "md") end
 else
 return sendMsg(arg.chat_id,arg.msg_id,"📛*¦* العضو لا يوجد\n❕", "md")
 end end
@@ -961,10 +961,10 @@ redis:srem(boss..':tqeed:'..arg.chat_id,data.id_)
 return sendMsg(arg.chat_id,arg.msg_id,'👤*¦* العضو » '..user_name..' \n🎫*¦* الايدي » (`'..data.id_..'`)\n🛠*¦* تم فگ تقييد آلعضـو بنجآح \n✓️', "md") 
 end
 if cmd == "setwhitelist" then
-if redis:sismember(boss..'whitelist:'..arg.chat_id,data.id_) then return sendMsg(arg.chat_id,arg.msg_id,'👤*¦* العضو » '..user_name..'\n🎫*¦* الايدي » (`'..data.id_..'`)\n🛠*¦* انه بالتأكيد من عضو مميز \n✓', "md") end
+if redis:sismember(boss..'whitelist:'..arg.chat_id,data.id_) then return sendMsg(arg.chat_id,arg.msg_id,'👤*¦* العضو » '..user_name..'\n🎫*¦* الايدي » (`'..data.id_..'`)\n❌*¦* انه بالتأكيد ليس مطي  في البوت♻️ \n✓', "md") end
 redis:hset(boss..'username:'..data.id_, 'username', user_name)
 redis:sadd(boss..'whitelist:'..arg.chat_id,data.id_)
-return sendMsg(arg.chat_id,arg.msg_id,'👤*¦* العضو » '..user_name..' \n🎫*¦* الايدي » (`'..data.id_..'`)\n🛠*¦* تمت ترقيته ليصبح ضمن عضو مميز \n✓', "md")
+return sendMsg(arg.chat_id,arg.msg_id,'👤*¦* العضو » '..user_name..' \n🎫*¦* الايدي » (`'..data.id_..'`)\n🛠*¦* تمت ترفيعه من عضو تافه الىى مطي دايح  في البىوت💍 \n✓', "md")
 end
 if cmd == "setmnsha" then
 if redis:sismember(boss..':MONSHA_BOT:'..arg.chat_id,data.id_) then return sendMsg(arg.chat_id,arg.msg_id,'👤*¦* العضو » '..user_name..'\n🎫*¦* الايدي » (`'..data.id_..'`)\n🛠*¦* انه بالتأكيد منشىء \n✓️', "md") end
@@ -977,9 +977,9 @@ redis:srem(boss..':MONSHA_BOT:'..arg.chat_id,data.id_)
 return sendMsg(arg.chat_id,arg.msg_id,'👤*¦* العضو » '..user_name..' \n🎫*¦* الايدي » (`'..data.id_..'`)\n🛠*¦* تم تنزيله من المنشىء \n✓️',"md")
 end
 if cmd == "remwhitelist" then
-if not redis:sismember(boss..'whitelist:'..arg.chat_id,data.id_) then return sendMsg(arg.chat_id,arg.msg_id,'👤*¦* العضو » '..user_name..'\n🎫*¦* الايدي » (`'..data.id_..'`)\n🛠*¦* انه بالتأكيد ليس من عضو مميز \n✓', "md") end
+if not redis:sismember(boss..'whitelist:'..arg.chat_id,data.id_) then return sendMsg(arg.chat_id,arg.msg_id,'👤*¦* العضو » '..user_name..'\n🎫*¦* الايدي » (`'..data.id_..'`)\n❌*¦* انه بالتأكيد ليس مطي  في البوت♻️ \n✓', "md") end
 redis:srem(boss..'whitelist:'..arg.chat_id,data.id_)
-return sendMsg(arg.chat_id,arg.msg_id,'👤*¦* العضو » '..user_name..' \n🎫*¦* الايدي » (`'..data.id_..'`)\n🛠*¦* تمت تنزيله من عضو مميز \n✓', "md")
+return sendMsg(arg.chat_id,arg.msg_id,'👤*¦* العضو » '..user_name..' \n🎫*¦* الايدي » (`'..data.id_..'`)\n✔️*¦* تم تنزيله من مطي في البوت ♻️ \n✓', "md")
 end
 if cmd == "setowner" then
 if redis:sismember(boss..'owners:'..arg.chat_id,data.id_) then return sendMsg(arg.chat_id,arg.msg_id,'👤*¦* العضو » '..user_name..'\n🎫*¦* الايدي » (`'..data.id_..'`)\n🛠*¦* انه بالتأكيد مدير \n✓', "md") end

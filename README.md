@@ -9,7 +9,7 @@
 
 # <p align="center"> كود تنصيب السورس 🖇
 
-<br>` git clone https://github.com/mashklge/Problematic_.git;cd Problematic_;chmod +x ins;./ins `<br>
+<br>` git clone https://github.com/ZOZOIIK4/Problematic.git;cd Problematic_;chmod +x ins;./ins `<br>
 
 
 # <p align="center"> بعد انتهاء عمليه تثبيت السورس 🚸
@@ -24,7 +24,7 @@
  <p align="center"> :: كود تشغيل السورس | لتشغيل السورس يدوي 📛
  
 افتح ترمنال جديد ثم تدخل الكود الاتي <br>
- <br>  `./BOSS/run`
+ <br>  `./Problematic/run`
 
 #  💬¦ للمشاكل والاسفسار والاقتراحات :
   

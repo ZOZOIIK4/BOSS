@@ -445,16 +445,16 @@ if matches[1] == "كشف"  then
 if not matches[2] and msg.reply_id then tdcli_function ({ID = "GetMessage",chat_id_ = msg.to.id,message_id_ = msg.reply_id}, action_by_reply, {msg_id=msg.id_,chat_id=msg.to.id,cmd="whois"})end 
 if matches[2] and string.match(matches[2], '^%d+$') then tdcli_function ({ID = "GetUser",user_id_ = matches[2],}, action_by_id, {chat_id=msg.to.id,msg_id=msg.id_,user_id=matches[2],cmd="whois"}) end
 if matches[2] and not string.match(matches[2], '^%d+$') then tdcli_function ({ID = "SearchPublicChat",username_ = matches[2]}, action_by_username, {msg_id=msg.id_,chat_id=msg.to.id,username=matches[2],cmd="whois"}) end end
-if matches[1] == "دفر" and is_mod(msg) then
+if matches[1] == "طرد" and is_mod(msg) then
 if not matches[2] and msg.reply_id then 
 tdcli_function ({ID = "GetMessage",chat_id_ = msg.to.id,message_id_ = msg.reply_id}, action_by_reply, {msg_id=msg.id_,chat_id=msg.to.id,msg_id=msg.id_,cmd="kick"})  end
 if matches[2] and string.match(matches[2], '^%d+$') then
-if matches[2] == our_id then sendMsg(msg.chat_id_,msg.id_,"📛¦ لا تستطيع دفر البوت\n🛠","md")
+if matches[2] == our_id then sendMsg(msg.chat_id_,msg.id_,"📛¦ لا تستطيع طرد البوت\n🛠","md")
 elseif is_mod1(msg.to.id,matches[2]) then sendMsg(msg.chat_id_,msg.id_,"📛¦ لا تستطيع طرد المدراء اوالادمنيه\n🛠","md")
 else kick_user(matches[2], msg.to.id) sleep(1) channel_unblock(msg.to.id, matches[2])
-sendMsg(msg.chat_id_, msg.id_,"🙋🏼‍♂️*¦* أهلا عزيزي  \n📡*¦* تم دفر العضو ["..matches[2].."]\n✓","md") end end
+sendMsg(msg.chat_id_, msg.id_,"🙋🏼‍♂️*¦* أهلا عزيزي  \n📡*¦* تم طرد العضو ["..matches[2].."]\n✓","md") end end
 if matches[2] and string.match(matches[2], '@[%a%d_]') then tdcli_function ({ID = "SearchPublicChat",username_ = matches[2]}, action_by_username, {msg_id=msg.id_,chat_id=msg.to.id,msg_id=msg.id_,username=matches[2],cmd="kick"}) end end
-if matches[1] == "حجب" and is_mod(msg)  then
+if matches[1] == "حظر" and is_mod(msg)  then
 if not matches[2] and msg.reply_id then tdcli_function ({ID = "GetMessage",chat_id_ = msg.to.id,message_id_ = msg.reply_id}, action_by_reply, {msg_id=msg.id_,chat_id=msg.to.id,cmd="ban"}) end
 if matches[2] and string.match(matches[2], '^%d+$') then tdcli_function ({ID = "GetUser",user_id_ = matches[2],}, action_by_id, {chat_id=msg.to.id,user_id=matches[2],msg_id=msg.id_,cmd="ban"}) end
 if matches[2] and string.match(matches[2], '@[%a%d_]') then tdcli_function ({ID = "SearchPublicChat",username_ = matches[2]}, action_by_username, {msg_id=msg.id_,chat_id=msg.to.id,username=matches[2],cmd="ban"}) end end
@@ -491,8 +491,8 @@ if matches[2] and string.match(matches[2], '^%d+$') then tdcli_function ({ID = "
 if matches[2] and not string.match(matches[2], '^%d+$') then tdcli_function ({ID = "SearchPublicChat",username_ = matches[2]}, action_by_username, {msg_id=msg.id_,chat_id=msg.to.id,username=matches[2],cmd="dn_sudo"}) end end
 if matches[1] == "ضع صوره للترحيب" or matches[1]=="ضع صوره للترحيب 🌄" then
 redis:setex(boss..'welcom_ph:witting'..msg.from.id,300,true) return'📭¦ حسننا عزيزي 🍁\n🌄 ¦ الان قم بارسال الصوره للترحيب \n🛠' end
-if matches[1] == "ايقاف" and matches[2] == "البوت خدمي" then return lock_service(msg) end
-if matches[1] == "تشغيل" and matches[2] == "البوت خدمي" then return unlock_service(msg) end
+if matches[1] == "تعطيل" and matches[2] == "البوت خدمي" then return lock_service(msg) end
+if matches[1] == "تفعيل" and matches[2] == "البوت خدمي" then return unlock_service(msg) end
 if matches[1] == "صوره الترحيب" then
 return sendPhoto(msg.to.id,msg.id_,0,1,nil,redis:get(boss..':WELCOME_BOT'),[[💯¦ مـرحبآ آنآ بوت آسـمـي ]]..redis:get(boss..'bot:name')..[[ 🎖
 💰¦ آختصـآصـي حمـآيهہ‏‏ آلمـجمـوعآت

@@ -1,6 +1,6 @@
 --[[
 << تم برمجه وكتابه السورس من قبل مطورين >>
-<<         @BLCON  \  @TH3BOSS          >>
+<<         @zozollk1  \  @zozollk1          >>
 ]]
 function dl_cb(dol, info) end 
 function getInputFile(file)

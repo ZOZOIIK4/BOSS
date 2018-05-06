@@ -403,7 +403,7 @@ return '🗯*¦* عدد رسـآئلگ هہيهہ‏‏» (*'..tonumber(redis:ge
  if matches[1]== 'جهاتي' then
  return '🧟‍♂*¦*  عدد جهہآتگ آلمـضـآفهہ‏‏ » 【'..(tonumber(redis:get(boss..':addusers_group:'..msg.to.id..':'..msg.from.id)) or 0)..'】 . \n🐾'
 end
-if matches[1] == 'معلوماتي' or matches[1] == 'رجلي' then
+if matches[1] == 'رجلي' or matches[1] == 'رجلي' then
 if msg.from.username then username = '@'..msg.from.username else username = 'لا يوجد ❕' end
 local msgs = tonumber(redis:get(boss..'msgs:'..msg.from.id..':'..msg.to.id) or 0)
 sendMsg(msg.to.id, msg.id_,'*👨🏽‍🔧¦ اهـلا بـك عزيزي » \n\n📜¦ الاسم » * ['..check_name(namecut(msg.from.first_name))..']\n*🎟¦ معرف رجلك :* ['..username..']\n*🏷¦ رقم الشاصي » * 【 `'..msg.from.id..'` 】\n📨*¦* عدد خطواتك » 【*'..msgs..'*】الماشيهة‏‏ \n🧟‍♂*¦*  عدد احذيتك  » 【'..(tonumber(redis:get(boss..':addusers_group:'..msg.to.id..':'..msg.from.id)) or 0)..'】حذاء‏‏\n⭐️*¦* سرعتك » '..get_ttl(msgs)..'\n*🎗¦ نوع رجلك » * '..get_rank(msg)..'\n*🎫¦ ايدي الكروب  » * ( `'..msg.to.id..'` ) \n\n*🏌🏻¦ مـطـور البوت * » '..SUDO_USER..'\n👨🏽‍🔧','md') end
@@ -445,16 +445,16 @@ if matches[1] == "كشف"  then
 if not matches[2] and msg.reply_id then tdcli_function ({ID = "GetMessage",chat_id_ = msg.to.id,message_id_ = msg.reply_id}, action_by_reply, {msg_id=msg.id_,chat_id=msg.to.id,cmd="whois"})end 
 if matches[2] and string.match(matches[2], '^%d+$') then tdcli_function ({ID = "GetUser",user_id_ = matches[2],}, action_by_id, {chat_id=msg.to.id,msg_id=msg.id_,user_id=matches[2],cmd="whois"}) end
 if matches[2] and not string.match(matches[2], '^%d+$') then tdcli_function ({ID = "SearchPublicChat",username_ = matches[2]}, action_by_username, {msg_id=msg.id_,chat_id=msg.to.id,username=matches[2],cmd="whois"}) end end
-if matches[1] == "طرد" and is_mod(msg) then
+if matches[1] == "دفر" and is_mod(msg) then
 if not matches[2] and msg.reply_id then 
 tdcli_function ({ID = "GetMessage",chat_id_ = msg.to.id,message_id_ = msg.reply_id}, action_by_reply, {msg_id=msg.id_,chat_id=msg.to.id,msg_id=msg.id_,cmd="kick"})  end
 if matches[2] and string.match(matches[2], '^%d+$') then
-if matches[2] == our_id then sendMsg(msg.chat_id_,msg.id_,"📛¦ لا تستطيع طرد البوت\n🛠","md")
+if matches[2] == our_id then sendMsg(msg.chat_id_,msg.id_,"📛¦ لا تستطيع دفر البوت\n🛠","md")
 elseif is_mod1(msg.to.id,matches[2]) then sendMsg(msg.chat_id_,msg.id_,"📛¦ لا تستطيع طرد المدراء اوالادمنيه\n🛠","md")
 else kick_user(matches[2], msg.to.id) sleep(1) channel_unblock(msg.to.id, matches[2])
-sendMsg(msg.chat_id_, msg.id_,"🙋🏼‍♂️*¦* أهلا عزيزي  \n📡*¦* تم طرد العضو ["..matches[2].."]\n✓","md") end end
+sendMsg(msg.chat_id_, msg.id_,"🙋🏼‍♂️*¦* أهلا عزيزي  \n📡*¦* تم دفر العضو ["..matches[2].."]\n✓","md") end end
 if matches[2] and string.match(matches[2], '@[%a%d_]') then tdcli_function ({ID = "SearchPublicChat",username_ = matches[2]}, action_by_username, {msg_id=msg.id_,chat_id=msg.to.id,msg_id=msg.id_,username=matches[2],cmd="kick"}) end end
-if matches[1] == "حظر" and is_mod(msg)  then
+if matches[1] == "حجب" and is_mod(msg)  then
 if not matches[2] and msg.reply_id then tdcli_function ({ID = "GetMessage",chat_id_ = msg.to.id,message_id_ = msg.reply_id}, action_by_reply, {msg_id=msg.id_,chat_id=msg.to.id,cmd="ban"}) end
 if matches[2] and string.match(matches[2], '^%d+$') then tdcli_function ({ID = "GetUser",user_id_ = matches[2],}, action_by_id, {chat_id=msg.to.id,user_id=matches[2],msg_id=msg.id_,cmd="ban"}) end
 if matches[2] and string.match(matches[2], '@[%a%d_]') then tdcli_function ({ID = "SearchPublicChat",username_ = matches[2]}, action_by_username, {msg_id=msg.id_,chat_id=msg.to.id,username=matches[2],cmd="ban"}) end end
